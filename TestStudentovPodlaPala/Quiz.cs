@@ -47,7 +47,7 @@ namespace TestStudentovPodlaPala
 
                 for (int i = 0; i < poleUzivIndexov.Length; i++)
                 {
-                    o.Odpovede[i] = o.Moznosti[poleUzivIndexov[i - 1]];
+                    o.Odpovede[i] = o.Moznosti[poleUzivIndexov[i] - 1];
                 }
 
             }
