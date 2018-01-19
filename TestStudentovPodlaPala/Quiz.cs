@@ -75,6 +75,7 @@ namespace TestStudentovPodlaPala
             {
                 bool res =  jeCisloAJeVIndexe(uzivVstup, otazka, out index);
                 poleIndexov = new int[] { index };
+                if (!res) Console.WriteLine("nespravy vstup");
                 return res;
             }
             else
@@ -100,7 +101,7 @@ namespace TestStudentovPodlaPala
             }
             else
             {
-                return index + 1 > 0 && index + 1 < otazka.Moznosti.Length;
+                return index + 1 > 0 && index + 1 < otazka.Moznosti.Length + 1;
             }
         }
     }
