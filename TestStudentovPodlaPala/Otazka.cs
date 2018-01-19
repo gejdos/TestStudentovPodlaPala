@@ -10,6 +10,9 @@ namespace TestStudentovPodlaPala
     {
         public string Text;
         private Moznost[] moznosti = new Moznost[3];
+        //nullable
+        //public int? Body;
+
         public Moznost[] Moznosti
         {
             get
@@ -37,14 +40,39 @@ namespace TestStudentovPodlaPala
                 Console.WriteLine(m.Text);
             }
         }
+
+        public virtual int VyhodnotOtazku()
+        {
+            return 0;
+        }
     }
 
     class SingleOtazka: Otazka
     {
+        public override int VyhodnotOtazku()
+        {
+            for (int i = 0; i < Odpovede.Length; i++)
+            {
+                if (this.Odpovede[i].Spravnost) return 1;
 
+            }
+
+            return 0;
+        }
     }
     class MultiOtazka: Otazka
     {
+        public override int VyhodnotOtazku()
+        {
+            int body = 0;
 
+            for (int i = 0; i < Odpovede.Length; i++)
+            {
+                if (this.Odpovede[i].Spravnost) body++;
+                else body--;
+            }
+
+            return body;
+        }
     }
 }
