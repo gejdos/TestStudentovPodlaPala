@@ -9,19 +9,21 @@ namespace TestStudentovPodlaPala
     class Quiz
     {
         private Otazka[] otazky;
+        int body;
 
         public Quiz()
         {
             otazky = new Otazka[2];
             Random r = new Random();
             DBOtazok db = new DBOtazok();
+            
             ArrayList vybraneCisla = new ArrayList();
             for (int i=0; i<2 ; i++)
             {
                 int index;
                 do
                 {
-                    index = r.Next();
+                    index = r.Next(3);
                 }
                 while (vybraneCisla.Contains(index));
                 otazky[i] = (Otazka)db.Otazky[index];
@@ -47,11 +49,17 @@ namespace TestStudentovPodlaPala
                 {
                     o.Odpovede[i] = o.Moznosti[poleUzivIndexov[i - 1]];
                 }
-                
 
             }
 
-            
+            body = 0;
+
+            foreach (Otazka o in otazky)
+            {
+                body += o.VyhodnotOtazku();
+            }
+
+            Console.WriteLine("Dostali ste {0} bodov", body);
             Console.ReadLine();
         }
 

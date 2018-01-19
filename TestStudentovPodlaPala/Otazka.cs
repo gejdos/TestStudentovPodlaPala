@@ -31,7 +31,7 @@ namespace TestStudentovPodlaPala
             set;
         }
 
-        public void VypisOtazku()
+        public virtual void VypisOtazku()
         {
             Console.WriteLine(Text);
             Console.WriteLine("-------------------------");
@@ -59,6 +59,12 @@ namespace TestStudentovPodlaPala
 
             return 0;
         }
+
+        public override void VypisOtazku()
+        {
+            Console.WriteLine("Single Choice");
+            base.VypisOtazku();
+        }
     }
     class MultiOtazka: Otazka
     {
@@ -73,6 +79,12 @@ namespace TestStudentovPodlaPala
             }
 
             return body;
+        }
+
+        public override void VypisOtazku()
+        {
+            Console.WriteLine("Multiple Choice");
+            base.VypisOtazku();
         }
     }
 }
